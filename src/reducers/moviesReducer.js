@@ -26,6 +26,18 @@ export const moviesReducer = (state, action) => {
         searchMovie: [...action.payload]
       }
     
+    case types.selectedMovie:
+      return {
+        ...state,
+        movie: {...action.payload}
+      }
+    
+    case types.addFavoritesMovies:
+      return {
+        ...state,
+        favoriteMovies: [...action.payload]
+      }
+    
     default:
       return state
   }

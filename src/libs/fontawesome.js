@@ -10,7 +10,8 @@ import {
   faHourglassStart,
   faFire,
   faCalendarDay,
-  faThumbsUp
+  faThumbsUp,
+  faHeart
 } from '@fortawesome/free-solid-svg-icons'
  
 library.add(
@@ -21,7 +22,9 @@ library.add(
   faHourglassStart,
   faGoogle,
   faFire,
-  faCalendarDay)
+  faCalendarDay,
+  faHeart
+)
 
 
 /* EXAMPLES

@@ -28,6 +28,10 @@ const InputContainer = styled.div`
       outline: none;
     }
   }
+
+  button {
+
+  }
 `;
 
 const MoviesContainer = styled.div`
@@ -59,6 +63,9 @@ export const SearchMovie = () => {
 
   const handleSearchMovie = (event) => {
     event.preventDefault();
+
+    if (search.length < 1) return
+  
     getMovieSearch(search);
     setSearch('');
   }

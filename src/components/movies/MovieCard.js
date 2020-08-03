@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from "react-router-dom";
 
 const ContainCard = styled.div`
   display: flex;
@@ -37,11 +38,13 @@ const IconAndText = styled.div`
   }
 `;
 
-export const MovieCard = ({ title, poster_path, backdrop_path, popularity, release_date, vote_average }) => {
+export const MovieCard = ({ id, title, poster_path, backdrop_path, popularity, release_date, vote_average }) => {
   return (
   <ContainCard>
       <h4>{title}</h4>
-      <img src={`https://image.tmdb.org/t/p/w342/${poster_path}` || ''} alt="No hay Imagen Disponible" />
+      <Link to={`/search/${id}`} >
+        <img src={`https://image.tmdb.org/t/p/w342/${poster_path}` || ''} alt="No hay Imagen Disponible" />
+      </Link>
       <IconAndText>
         <FontAwesomeIcon icon="fire" color="#ff9900"/>
         <p>{popularity}</p>
