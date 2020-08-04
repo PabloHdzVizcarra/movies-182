@@ -5,6 +5,7 @@ export const types = {
   searchMovies: '[MOVIES] Search Movies',
   selectedMovie: '[MOVIES] Search Movie ID',
   addFavoritesMovies: '[MOVIES] Add favorite movie',
+  getFavoritesMoviesFirebase: '[MOVIES] Get favorite movies',
 
   setActiveUser: '[AUTH] Set active user',
   logoutUser: '[AUTH] Logout user',

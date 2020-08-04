@@ -1,6 +1,7 @@
 import { types } from "../types/types";
 
 export const moviesReducer = (state, action) => {
+  // console.log(action);
 
   switch (action.type) {
     case types.loadingPopularMovies:
@@ -35,7 +36,14 @@ export const moviesReducer = (state, action) => {
     case types.addFavoritesMovies:
       return {
         ...state,
-        favoriteMovies: [...action.payload]
+        favoriteMovies: [action.payload, ...state.favoriteMovies ]
+      }
+    
+    case types.getFavoritesMoviesFirebase:
+      return {
+        ...state,
+        favoriteMovies: action.payload,
+        loadingMovies: false
       }
     
     default:

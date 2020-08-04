@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from "react-router-dom";
+import { useAuthState } from "../../context/authContext";
+import { MoviesContext } from "../../context/MoviesContext";
+
+
 
 const ContainCard = styled.div`
   display: flex;
@@ -38,12 +42,46 @@ const IconAndText = styled.div`
   }
 `;
 
-export const MovieCard = ({ id, title, poster_path, backdrop_path, popularity, release_date, vote_average }) => {
+const TitleAndIcon = styled.div`
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+
+  svg {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+`;
+
+export const MovieCard = ({ docID, isActived, id, title, poster_path, imgMovie, popularity, release_date, vote_average }) => {
+
+  const { activeUser } = useAuthState();
+  const { deleteMovieFromFavorites } = useContext(MoviesContext);
+
+  function handleDeleteFavoriteMovie() {
+    deleteMovieFromFavorites(activeUser.uid, docID);
+
+
+  }
+
   return (
-  <ContainCard>
-      <h4>{title}</h4>
+    <ContainCard>
+      <TitleAndIcon>
+        <h4>{title}</h4>
+        {isActived
+          && <FontAwesomeIcon
+          icon="heart-broken" 
+          onClick={handleDeleteFavoriteMovie}
+          />
+        }
+      </TitleAndIcon>
       <Link to={`/search/${id}`} >
-        <img src={`https://image.tmdb.org/t/p/w342/${poster_path}` || ''} alt="No hay Imagen Disponible" />
+        {
+          imgMovie
+            ? <img src={imgMovie} alt={title}/>
+            : <img src={`https://image.tmdb.org/t/p/w342/${poster_path}` || ''} alt="No hay Imagen Disponible" />
+        }
       </Link>
       <IconAndText>
         <FontAwesomeIcon icon="fire" color="#ff9900"/>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,13 +15,10 @@ import { firebase } from '../libs/firebase';
 import { useAuthDispatch } from '../context/authContext';
 import { types } from '../types/types';
 import { PageFavorites } from '../layout/favorites/PageFavorites';
-import { getFavoritesMoviesFirebase } from '../helpers/getFavoritesMoviesFirebase';
-import { MoviesContext } from '../context/MoviesContext';
 
 export const AppRouter = () => {
 
   const dispatch = useAuthDispatch();
-  const { dispatch: dispatchMovies } = useContext(MoviesContext);
 
   firebase.auth().onAuthStateChanged(async(user) => {
     if (user) {
@@ -37,22 +34,15 @@ export const AppRouter = () => {
           uid
         }
       })
-
-      const data = await getFavoritesMoviesFirebase(user.uid);
-      
-      dispatchMovies({
-        type: types.addFavoritesMovies,
-        payload: data
-      })
-
-
     } else {
       console.log('No hay usuario logueado');
     }
 
   });
 
-  
+  useEffect(() => {
+
+  }, [])
 
 
 

@@ -11,7 +11,8 @@ import {
   faFire,
   faCalendarDay,
   faThumbsUp,
-  faHeart
+  faHeart,
+  faHeartBroken
 } from '@fortawesome/free-solid-svg-icons'
  
 library.add(
@@ -23,7 +24,8 @@ library.add(
   faGoogle,
   faFire,
   faCalendarDay,
-  faHeart
+  faHeart,
+  faHeartBroken
 )
 
 

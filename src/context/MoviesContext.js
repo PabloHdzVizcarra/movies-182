@@ -9,15 +9,15 @@ export const MoviesContext = createContext();
 
 export const MoviesProvider = ({ children }) => {
 
-
   const [state, dispatch] = useReducer(moviesReducer, {
     movies: [],
     favoriteMovies: [],
     searchMovie: [],
-    movie: {}
+    movie: {},
+    loadingMovies: true
   });
   
-  const { movies, favoriteMovies, searchMovie, movie } = state;
+  const { movies, favoriteMovies, searchMovie, movie, loadingMovies } = state;
   
 
   const getTopRatedMovies = useCallback(async () => {
@@ -72,6 +72,37 @@ export const MoviesProvider = ({ children }) => {
     }
   }, []);
 
+  const getMoviesFirebase = async(uid) => {
+
+    try {
+      
+      let allFavoritesMovies = [];
+
+      await db.collection(uid)
+      .doc("movies")
+      .collection("favorites")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          let movie;
+          movie = { ...doc.data() }
+          movie.docID = doc.id;
+          allFavoritesMovies.push(movie)
+        });
+      });
+
+      // const reversedArray = allFavoritesMovies.reverse();
+
+      dispatch({
+        type: types.getFavoritesMoviesFirebase,
+        payload: allFavoritesMovies
+      })
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const getMovieSearch = async (key) => {
 
     try {
@@ -108,6 +139,8 @@ export const MoviesProvider = ({ children }) => {
       console.log(error);
     }
   }
+
+
 
   const addFavoriteMovie = async (movie) => {
 
@@ -154,7 +187,7 @@ export const MoviesProvider = ({ children }) => {
       favoriteMovie.firebaseID = id;
 
       dispatch({
-        type: types.addFavoriteMovie,
+        type: types.addFavoritesMovies,
         payload: favoriteMovie
       })
       
@@ -164,8 +197,39 @@ export const MoviesProvider = ({ children }) => {
       throw new Error('No hay usuario autenticado')
     }
 
+  }
+
+  const deleteMovieFromFavorites = async (userID, docID) => {
+    
+
+    // await db.collection(userID).doc('movies').collection('favorites').doc(docID)
+    //   .delete()
+    
+    
 
   }
+
+  // const callbackMovies = useCallback(async () => {
+  //   const { uid } = firebase.auth().currentUser;
+
+  //   let allFavoritesMovies = [];
+
+  //   await
+  //     db.collection(uid)
+  //     .doc("movies")
+  //     .collection("favorites")
+  //     .get()
+  //     .then((querySnapshot) => {
+  //       querySnapshot.forEach((doc) => {
+  //         allFavoritesMovies.push({
+  //           ...doc.data()
+  //         })
+  //       });
+  //     });
+
+  //   return allFavoritesMovies
+  // })
+  
   
   return (
     <MoviesContext.Provider value={{
@@ -173,12 +237,15 @@ export const MoviesProvider = ({ children }) => {
       movies,
       favoriteMovies,
       searchMovie,
+      loadingMovies,
       getMovieID,
       getPopularMovies,
       getTopRatedMovies,
       getUpcomingMovies,
       getMovieSearch,
       addFavoriteMovie,
+      getMoviesFirebase,
+      deleteMovieFromFavorites,
       dispatch
     }}>
       {children}
