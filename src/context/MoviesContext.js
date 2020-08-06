@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useCallback } from 'react';
+import React, { createContext, useReducer, useCallback, useState } from 'react';
 import { moviesReducer } from '../reducers/moviesReducer';
 import { types } from '../types/types';
 import { db, firebase } from '../libs/firebase';
@@ -15,6 +15,11 @@ export const MoviesProvider = ({ children }) => {
     searchMovie: [],
     movie: {},
     loadingMovies: true
+  });
+
+  const [errorForm, setErrorForm] = useState({
+    error: false,
+    message: ''
   });
   
   const { movies, favoriteMovies, searchMovie, movie, loadingMovies } = state;
@@ -110,6 +115,19 @@ export const MoviesProvider = ({ children }) => {
       const data = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${key}`);
       
       const { results } = await data.json();
+      console.log(results);
+
+      if (results.length === 0) {
+        return setErrorForm({
+          error: true,
+          message: 'Intenta buscando otra pelicula'
+        })
+      }
+
+      setErrorForm({
+        error: false,
+        message: ''
+      })
 
       dispatch({
         type: types.searchMovies,
@@ -200,36 +218,19 @@ export const MoviesProvider = ({ children }) => {
   }
 
   const deleteMovieFromFavorites = async (userID, docID) => {
+    console.log(docID);
+
+    dispatch({
+      type: types.removeMovieFromFavorites,
+      payload: docID
+    })
     
 
-    // await db.collection(userID).doc('movies').collection('favorites').doc(docID)
-    //   .delete()
-    
-    
+    await db.collection(userID).doc('movies').collection('favorites').doc(docID)
+      .delete();
 
+    return console.log(`PELICULA ELIMINADA`);
   }
-
-  // const callbackMovies = useCallback(async () => {
-  //   const { uid } = firebase.auth().currentUser;
-
-  //   let allFavoritesMovies = [];
-
-  //   await
-  //     db.collection(uid)
-  //     .doc("movies")
-  //     .collection("favorites")
-  //     .get()
-  //     .then((querySnapshot) => {
-  //       querySnapshot.forEach((doc) => {
-  //         allFavoritesMovies.push({
-  //           ...doc.data()
-  //         })
-  //       });
-  //     });
-
-  //   return allFavoritesMovies
-  // })
-  
   
   return (
     <MoviesContext.Provider value={{
@@ -238,6 +239,7 @@ export const MoviesProvider = ({ children }) => {
       favoriteMovies,
       searchMovie,
       loadingMovies,
+      errorForm,
       getMovieID,
       getPopularMovies,
       getTopRatedMovies,

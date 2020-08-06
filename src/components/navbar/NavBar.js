@@ -1,85 +1,122 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ContainNav, MainTitle, ContainButtons } from './NavBarStyles';
-import { firebase, googleAuthProvider } from '../../libs/firebase';
-import { useAuthState, useAuthDispatch } from '../../context/authContext';
-import { types } from '../../types/types';
-
+import React, { useContext } from "react";
+import { Link, NavLink, useHistory } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ContainNav, MainTitle, ContainButtons } from "./NavBarStyles";
+import { firebase, googleAuthProvider } from "../../libs/firebase";
+import { useAuthState, useAuthDispatch } from "../../context/authContext";
+import { types } from "../../types/types";
+import { MoviesContext } from "../../context/MoviesContext";
 
 export const NavBar = () => {
-
   const { activeUser, isActived } = useAuthState();
   const dispatch = useAuthDispatch();
+  const { dispatch: dispatchMovies } = useContext(MoviesContext);
+  const history = useHistory();
 
   const handleClickLoginGoogle = () => {
-    firebase.auth().signInWithPopup(googleAuthProvider).then(function(result) {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      var token = result.credential.accessToken;
-      // The signed-in user info.
-      var user = result.user;
-
-      console.log(token);
-      console.log(user);
-      // ...
-    }).catch(function(error) {
-      // Handle Errors here.
-      // var errorCode = error.code;
-      // var errorMessage = error.message;
-      // The email of the user's account used.
-      // var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      // var credential = error.credential;
-      // ...
-    });
-  }
+    firebase
+      .auth()
+      .signInWithPopup(googleAuthProvider)
+      .then(function (result) {})
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   const handleClickLogout = () => {
-    console.log('Cerrando sesion');
+    console.log("Cerrando sesion");
     firebase.auth().signOut();
     dispatch({
-      type: types.logoutUser
-    })
-  }
-  
+      type: types.logoutUser,
+    });
+  };
+
+  const cleanFavoriteMovies = () => {
+    dispatchMovies({
+      type: types.cleanMovies,
+    });
+  };
+
+  const handlePushPage = () => {
+    history.push("/");
+  };
+
   return (
     <ContainNav>
       <MainTitle>
-        <Link to="/">
-          Movies 182
-        </Link>
-        {
-          (Object.keys(activeUser).length === 0)
-            ?  <Link to="/">
-                Inicia Sesion
-                  <FontAwesomeIcon
-                  icon={['fab', 'google']} 
-                  onClick={handleClickLoginGoogle}
-                  />
-              </Link>
-            : <button
-              onClick={handleClickLogout}
-            >Cerrar sesion</button>
-        }
-        
+        <h1 onClick={handlePushPage}>Fun Movies</h1>
       </MainTitle>
       <ContainButtons>
-        <Link to="/popular">
+        <NavLink
+          activeStyle={{
+            color: "#4E5166",
+            pointerEvents: "none",
+            cursor: "default",
+          }}
+          onClick={cleanFavoriteMovies}
+          to="/popular"
+        >
           Populares
-        </Link>
-        <Link to="/top">
+        </NavLink>
+        <NavLink
+          activeStyle={{
+            color: "#4E5166",
+            pointerEvents: "none",
+            cursor: "default",
+          }}
+          onClick={cleanFavoriteMovies}
+          to="/top"
+        >
           Mejor valoradas
-        </Link>
-        <Link to="/upcoming">
+        </NavLink>
+        <NavLink
+          activeStyle={{
+            color: "#4E5166",
+            pointerEvents: "none",
+            cursor: "default",
+          }}
+          onClick={cleanFavoriteMovies}
+          to="/upcoming"
+        >
           Proximas
-        </Link>
-        <Link to="/search">
+        </NavLink>
+        <NavLink
+          activeStyle={{
+            color: "#4E5166",
+            pointerEvents: "none",
+            cursor: "default",
+          }}
+          onClick={cleanFavoriteMovies}
+          to="/search"
+        >
           Buscar
-        </Link>
-        
-        {isActived && <Link to="/favorites">Favoritas</Link>}
+        </NavLink>
 
+        {isActived && (
+          <NavLink
+            to="/favorites"
+            activeStyle={{
+              color: "#4E5166",
+              pointerEvents: "none",
+              cursor: "default",
+            }}
+          >
+            Favoritas
+          </NavLink>
+        )}
+
+        {Object.keys(activeUser).length === 0 ? (
+          <Link to="/">
+            Inicia Sesion
+            <FontAwesomeIcon
+              icon={["fab", "google"]}
+              onClick={handleClickLoginGoogle}
+            />
+          </Link>
+        ) : (
+          <button onClick={handleClickLogout}>Cerrar sesion</button>
+        )}
       </ContainButtons>
     </ContainNav>
-  )
-}
+  );
+};

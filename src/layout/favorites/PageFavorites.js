@@ -9,6 +9,9 @@ const MoviesContainer = styled.div`
   display: grid;
   gap: 10px;
   padding: 16px;
+  height: max-content;
+  background-color: rgba(133, 133, 133, .2);
+  min-height: 87vh;
 
   ${respondTo.xs`
     grid-template-columns: 1fr;

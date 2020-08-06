@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,38 +13,26 @@ import { SearchMovie } from '../layout/search/SearchMovie';
 import { Movie } from '../layout/movie/Movie';
 import { firebase } from '../libs/firebase';
 import { useAuthDispatch } from '../context/authContext';
-import { types } from '../types/types';
 import { PageFavorites } from '../layout/favorites/PageFavorites';
+import { PrivateRoute } from './PrivateRoute';
+import { actionSetActiveUser } from '../actions/auth-actions';
 
 export const AppRouter = () => {
 
   const dispatch = useAuthDispatch();
+  const [isLogin, setIsLogin] = useState(false);
 
   firebase.auth().onAuthStateChanged(async(user) => {
     if (user) {
 
-      const { email, emailVerified, displayName, uid } = user;
+      dispatch(actionSetActiveUser(user));
 
-      dispatch({
-        type: types.setActiveUser,
-        payload: {
-          email,
-          emailVerified,
-          displayName,
-          uid
-        }
-      })
+      setIsLogin(true);
     } else {
+      setIsLogin(false);
       console.log('No hay usuario logueado');
     }
-
   });
-
-  useEffect(() => {
-
-  }, [])
-
-
 
   return (
     <div>
@@ -57,7 +45,13 @@ export const AppRouter = () => {
           <Route path="/upcoming" component={Upcoming} />
           <Route exact path="/search" component={SearchMovie} />
           <Route path="/search/:movieID" component={Movie} />
-          <Route path="/favorites" component={PageFavorites} />
+          {/* <Route path="/favorites" component={PageFavorites} /> */}
+
+          <PrivateRoute
+            isLogin={isLogin}  
+            path="/favorites"
+            component={PageFavorites}
+          />
 
           <Redirect to="/"/>
         </Switch>

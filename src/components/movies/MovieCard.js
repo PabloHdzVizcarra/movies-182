@@ -13,6 +13,7 @@ const ContainCard = styled.div`
   padding: 1rem;
   background-color: rgb(0, 0, 0, .1);
   border-radius: 6px;
+  height: fit-content;
 
   h4 {
     margin-top: 5px;
@@ -34,11 +35,18 @@ const IconAndText = styled.div`
   display: flex;
   align-items: center;
   margin-top: 5px;
+
   
   p {
     margin: 2px;
     font-weight: bold;
     font-family: monospace;
+  }
+
+  div {
+    display: flex;
+    margin-left: 10px;
+    font-size: 13px;
   }
 `;
 
@@ -49,12 +57,13 @@ const TitleAndIcon = styled.div`
 
   svg {
     &:hover {
+      color: #ff1a1a;
       cursor: pointer;
     }
   }
 `;
 
-export const MovieCard = ({ docID, isActived, id, title, poster_path, imgMovie, popularity, release_date, vote_average }) => {
+export const MovieCard = ({ docID, tagline,  isActived, id, title, poster_path, imgMovie, popularity, release_date, vote_average }) => {
 
   const { activeUser } = useAuthState();
   const { deleteMovieFromFavorites } = useContext(MoviesContext);
@@ -62,11 +71,12 @@ export const MovieCard = ({ docID, isActived, id, title, poster_path, imgMovie, 
   function handleDeleteFavoriteMovie() {
     deleteMovieFromFavorites(activeUser.uid, docID);
 
-
   }
 
   return (
-    <ContainCard>
+    <ContainCard
+      className="animate__animated animate__fadeIn"
+    >
       <TitleAndIcon>
         <h4>{title}</h4>
         {isActived
@@ -80,20 +90,33 @@ export const MovieCard = ({ docID, isActived, id, title, poster_path, imgMovie, 
         {
           imgMovie
             ? <img src={imgMovie} alt={title}/>
-            : <img src={`https://image.tmdb.org/t/p/w342/${poster_path}` || ''} alt="No hay Imagen Disponible" />
+            : <img src={(poster_path) ? `https://image.tmdb.org/t/p/w342/${poster_path}`
+              : 'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80'
+            } alt="No hay Imagen Disponible" />
         }
       </Link>
       <IconAndText>
-        <FontAwesomeIcon icon="fire" color="#ff9900"/>
-        <p>{popularity}</p>
+        <p>Popularidad</p>
+        <div>
+          <FontAwesomeIcon icon="fire" color="#ff9900"/>
+          <p>{popularity}</p>
+        </div>
       </IconAndText>
       <IconAndText>
-        <FontAwesomeIcon icon="thumbs-up" color="#b98946" />
-        <p>{vote_average}</p>
+        <p>Likes</p>
+        <div>
+          <FontAwesomeIcon icon="thumbs-up" color="#b98946" />
+          <p>{vote_average}</p>
+
+        </div>
       </IconAndText>
       <IconAndText>
-        <FontAwesomeIcon icon="calendar-day" color="#1a75ff"/>
-        <p>{release_date}</p>
+        <p>Fecha de lanzamiento</p>
+        <div>
+          <FontAwesomeIcon icon="calendar-day" color="#1a75ff"/>
+          <p>{release_date}</p>
+
+        </div>
       </IconAndText>
     </ContainCard>
   )
