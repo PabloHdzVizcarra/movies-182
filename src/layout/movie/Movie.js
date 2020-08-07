@@ -10,7 +10,7 @@ import { respondTo } from '../../styles/_respondTo';
 
 const ContainerMovie = styled.div`
   display: grid;
-  background-color: #F5F8F9;
+  background-color: #FFFFFF;
 
   ${respondTo.md`
     grid-template-columns: auto 1fr;
@@ -78,7 +78,7 @@ const StyleContainer = styled.div`
   margin: 10px;
   padding: 20px;
   border-radius: 6px;
-  background-color: #ECF0F2;
+  background-color: rgba(82, 72, 156, .1);
     
 
   ${respondTo.md`

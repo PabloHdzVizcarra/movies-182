@@ -10,7 +10,7 @@ const MoviesContainer = styled.div`
   gap: 10px;
   padding: 16px;
   height: max-content;
-  background-color: rgba(133, 133, 133, .2);
+  background-color: #FFFFFF;
   min-height: 87vh;
 
   ${respondTo.xs`

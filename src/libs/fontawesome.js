@@ -1,8 +1,5 @@
-import { library } from '@fortawesome/fontawesome-svg-core'
-import {
-  fab,
-  faGoogle
-} from '@fortawesome/free-brands-svg-icons'
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab, faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 import {
   faCheckSquare,
@@ -12,9 +9,9 @@ import {
   faCalendarDay,
   faThumbsUp,
   faHeart,
-  faHeartBroken
-} from '@fortawesome/free-solid-svg-icons'
- 
+  faHeartBroken,
+} from "@fortawesome/free-solid-svg-icons";
+
 library.add(
   fab,
   faThumbsUp,
@@ -26,8 +23,7 @@ library.add(
   faCalendarDay,
   faHeart,
   faHeartBroken
-)
-
+);
 
 /* EXAMPLES
 

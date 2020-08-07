@@ -8,7 +8,7 @@ const ContainMovies = styled.div`
   padding: 1rem;
   display: grid;
   gap: 10px;
-  background-color: rgba(133, 133, 133, .2);
+  background-color: #FFFFFF;
   
 
   ${respondTo.xs`

@@ -86,8 +86,6 @@ export const SearchMovie = () => {
     event.preventDefault();
 
     if (search.length < 1) return
-  
-    console.log(errorForm);
     getMovieSearch(search);
     setSearch('');
   }

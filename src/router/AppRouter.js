@@ -30,7 +30,7 @@ export const AppRouter = () => {
       setIsLogin(true);
     } else {
       setIsLogin(false);
-      console.log('No hay usuario logueado');
+      console.log("NOT LOGIN USER");
     }
   });
 

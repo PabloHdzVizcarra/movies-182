@@ -3,7 +3,7 @@ import { respondTo } from "../../styles/_respondTo";
 
 export const ContainNav = styled.div`
   display: grid;
-  background-color: #302B27;
+  background-color: rgba(82, 72, 156, 1);
   grid-template-columns: 100%;
   grid-template-rows: auto auto;
   gap: 10px;
@@ -30,7 +30,7 @@ export const ContainNav = styled.div`
     align-items: center;
     justify-content: space-between;
   `}
-`; 
+`;
 
 export const MainTitle = styled.div`
   font-size: 1.3rem;
@@ -45,7 +45,7 @@ export const MainTitle = styled.div`
   h1 {
     margin: 2px;
     cursor: pointer;
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Josefin Sans', sans-serif;
     color: white;
   }
 
@@ -63,7 +63,8 @@ export const MainTitle = styled.div`
     align-items: center;
 
     h1 {
-      font-size: 2.2rem;
+      margin-top: 18px;
+      font-size: 44px;
     }
   `}
 
@@ -71,7 +72,8 @@ export const MainTitle = styled.div`
     margin-top: -10px;
 
     h1 {
-      font-size: 2.2rem;
+      margin-top: 18px;
+      font-size: 44px;
     }
   `}
 
@@ -107,18 +109,18 @@ export const ContainButtons = styled.div`
   `}
 
   a {
-    background-color: rgba(116, 114, 116, .7);
+    background-color: transparent;
     padding: 5px;
     border-radius: 6px;
     text-decoration: none;
-    color: #B9B7A7;
+    color: #FFFFFF;
     margin: 0 5px 0 5px;
 
     transition: 300ms ease background-color;
     transition: 300ms ease color;
     &:hover {
-      background-color: rgba(116, 114, 116, 1);
-      color: #39372d;
+      background-color: transparent;
+      color: #d9d9d9;
     }
   }
 
@@ -132,21 +134,23 @@ export const ContainButtons = styled.div`
   }
   
   button {
-    background-color: #ff4d4d;
-    padding: 7px;
+    background-color: transparent;
     border-radius: 6px;
-    text-decoration: none;
-    color: white;
-    margin: 0 5px 0 5px;
     border: none;
+    color: white;
     cursor: pointer;
+    font-size: 15px;
+    margin: 0 5px 0 5px;
+    padding: 7px;
+    text-align: inherit;
+    text-decoration: none;
 
 
     transition: 300ms ease background-color;
     transition: 300ms ease color;
     &:hover {
-      background-color: #ff0000;
-      color: white;
+      background-color: transparent;
+      color: #ff4d4d;
     }
   }
 

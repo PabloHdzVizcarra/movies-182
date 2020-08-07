@@ -24,7 +24,6 @@ export const NavBar = () => {
   };
 
   const handleClickLogout = () => {
-    console.log("Cerrando sesion");
     firebase.auth().signOut();
     dispatch({
       type: types.logoutUser,
@@ -49,7 +48,7 @@ export const NavBar = () => {
       <ContainButtons>
         <NavLink
           activeStyle={{
-            color: "#4E5166",
+            color: "#d9d9d9",
             pointerEvents: "none",
             cursor: "default",
           }}
@@ -60,7 +59,7 @@ export const NavBar = () => {
         </NavLink>
         <NavLink
           activeStyle={{
-            color: "#4E5166",
+            color: "#d9d9d9",
             pointerEvents: "none",
             cursor: "default",
           }}
@@ -71,7 +70,7 @@ export const NavBar = () => {
         </NavLink>
         <NavLink
           activeStyle={{
-            color: "#4E5166",
+            color: "#d9d9d9",
             pointerEvents: "none",
             cursor: "default",
           }}
@@ -82,7 +81,7 @@ export const NavBar = () => {
         </NavLink>
         <NavLink
           activeStyle={{
-            color: "#4E5166",
+            color: "#d9d9d9",
             pointerEvents: "none",
             cursor: "default",
           }}
@@ -96,7 +95,7 @@ export const NavBar = () => {
           <NavLink
             to="/favorites"
             activeStyle={{
-              color: "#4E5166",
+              color: "#d9d9d9",
               pointerEvents: "none",
               cursor: "default",
             }}
