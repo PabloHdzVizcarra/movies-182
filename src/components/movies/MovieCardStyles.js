@@ -8,6 +8,7 @@ export const ContainCard = styled.div`
   border-radius: 6px;
   font-family: 'Roboto', sans-serif;
   width: 100%;
+  padding-bottom: 10px;
 
   h4 {
     font-family: 'Roboto', sans-serif;
@@ -69,10 +70,6 @@ export const IconAndText = styled.div`
     display: flex;
     margin-left: 5px;
   }
-
-  .finalP {
-    padding-bottom: 10px;
-  }
 `;
 
 export const TitleAndIcon = styled.div`
@@ -93,4 +90,21 @@ export const InfoData = styled.div`
   padding-right: 5px;
   width: 100%;
 
+`;
+
+export const TextDeleteMovie = styled.p`
+  margin: 0;
+  margin-left: 7px;
+  font-size: 15px;
+  color: #ff3333;
+  font-weight: bold;
+  cursor: pointer;
+  width: fit-content;
+  margin-top: -5px;
+
+  transition: ease color 300ms;
+
+    &:hover {
+      color: #D50000;
+    }
 `;

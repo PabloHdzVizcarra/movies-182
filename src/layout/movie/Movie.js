@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { MoviesContext } from "../../context/MoviesContext";
 import { types } from "../../types/types";
@@ -12,24 +12,32 @@ import {
 } from "./MovieStyles";
 import moment from "moment";
 import "moment/locale/es";
+import { useAuthState } from "../../context/authContext";
 moment.locale("es");
 
 export const Movie = () => {
-  const [isFavorite, setIsFavorite] = useState(false);
+
+  const user = useAuthState();
+
   const {
     movie,
     getMovieID,
     addFavoriteMovie,
     dispatch,
-    favoriteMovies,
+    getMoviesFirebase,
+    searchMovieFavorites
   } = useContext(MoviesContext);
   const { movieID } = useParams();
-  console.log(favoriteMovies);
 
   useEffect(() => {
     let mounted = true;
     if (mounted) {
       getMovieID(movieID);
+    }
+
+    if (user.activeUser.uid) {
+      
+      getMoviesFirebase(user.activeUser.uid);
     }
 
     return () => {
@@ -39,7 +47,7 @@ export const Movie = () => {
       });
     };
     //eslint-disable-next-line
-  }, []);
+  }, [user.activeUser.uid]);
 
   if (Object.keys(movie).length === 0) {
     return <p>Loading...</p>;
@@ -47,11 +55,11 @@ export const Movie = () => {
 
   const handleAddFavorite = () => {
     addFavoriteMovie(movie);
-    setIsFavorite(true);
   };
 
   const {
     genres,
+    id,
     overview,
     production_countries,
     release_date,
@@ -70,6 +78,8 @@ export const Movie = () => {
   const allCountrys = production_countries
     .map((genre) => genre.name)
     .join(" | ");
+  
+  console.log(searchMovieFavorites(id))
 
   return (
     <ContainerMovie className="animate__animated animate__fadeIn">
@@ -120,10 +130,10 @@ export const Movie = () => {
           <p>
             <span>Numero de votos:</span> {vote_count}
           </p>
-          {!isFavorite && (
+          {user.isActived && !searchMovieFavorites(id) && (
             <IconHeart>
               <p style={{ color: "#ff6d00", fontWeight: "bold" }}>
-                Añadir a favoritos
+                {!searchMovieFavorites(id) ? "Añadir a favoritos" : "Pelicula guardada en favoritos" }
               </p>
               <FontAwesomeIcon icon="heart" onClick={handleAddFavorite} />
             </IconHeart>

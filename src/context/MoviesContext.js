@@ -12,6 +12,7 @@ export const MoviesProvider = ({ children }) => {
     searchMovie: [],
     movie: {},
     loadingMovies: true,
+    movieSaveFavorites: false,
   });
 
   const [errorForm, setErrorForm] = useState({
@@ -20,6 +21,17 @@ export const MoviesProvider = ({ children }) => {
   });
 
   const { movies, favoriteMovies, searchMovie, movie, loadingMovies } = state;
+
+  const searchMovieFavorites = (idMovie) => {
+
+    if (Object.keys(state.favoriteMovies).length === 0) {
+      return null;
+    }
+
+    return state.favoriteMovies.map((movie) => movie.id).includes(idMovie);
+    
+    
+  }
 
   const getTopRatedMovies = useCallback(async () => {
     try {
@@ -194,8 +206,7 @@ export const MoviesProvider = ({ children }) => {
       vote_average,
       vote_count,
     };
-
-    const { uid } = firebase.auth().currentUser;
+    const { uid } =  firebase.auth().currentUser;
 
     if (uid) {
       const { id } = await db
@@ -250,6 +261,7 @@ export const MoviesProvider = ({ children }) => {
         addFavoriteMovie,
         getMoviesFirebase,
         deleteMovieFromFavorites,
+        searchMovieFavorites,
         dispatch,
       }}
     >

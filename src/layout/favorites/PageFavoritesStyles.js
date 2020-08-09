@@ -5,9 +5,8 @@ export const MoviesContainer = styled.div`
   display: grid;
   gap: 10px;
   padding: 16px;
-  height: max-content;
+  height: min-content;
   background-color: #FFFFFF;
-  min-height: 87vh;
 
   ${respondTo.xs`
     grid-template-columns: 1fr;

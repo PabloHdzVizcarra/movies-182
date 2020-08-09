@@ -7,6 +7,7 @@ import {
   ContainCard,
   IconAndText,
   InfoData,
+  TextDeleteMovie,
 } from "./MovieCardStyles";
 import { shortTitleMovie } from "../../helpers/short-title-movie";
 import moment from "moment";
@@ -56,12 +57,6 @@ export const MovieCard = ({
       <div>
         <InfoData>
           <h4>{shortTitle}</h4>
-          {isActived && (
-            <FontAwesomeIcon
-              icon="heart-broken"
-              onClick={handleDeleteFavoriteMovie}
-            />
-          )}
           <IconAndText>
             <div>
               <p>Calificacion:</p>
@@ -86,6 +81,13 @@ export const MovieCard = ({
               </p>
             </div>
           </IconAndText>
+          {isActived && (
+            <TextDeleteMovie
+              onClick={handleDeleteFavoriteMovie}
+            >
+              Eliminar pelicula
+            </TextDeleteMovie>
+          )}
         </InfoData>
       </div>
     </ContainCard>
