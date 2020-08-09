@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test in <PrincipalScreen /> the API call must return a movie array  1`] = `
+<div
+  className="sc-AxhUy ikkLlw animate__animated animate__fadeIn"
+/>
+`;

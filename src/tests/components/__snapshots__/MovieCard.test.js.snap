@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test in <MovieCard /> should show correctly component 1`] = `
+<div
+  className="sc-AxjAm fqznPg animate__animated animate__fadeIn"
+>
+  <div
+    className="sc-AxiKw iJeoGb"
+  >
+    <h4 />
+  </div>
+  <a
+    href="/search/undefined"
+    onClick={[Function]}
+  >
+    <img
+      alt="No hay Imagen Disponible"
+      src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+    />
+  </a>
+  <div
+    className="sc-AxhCb MfWJC"
+  >
+    <div
+      className="sc-AxirZ ZiLo"
+    >
+      <p>
+        Popularidad
+      </p>
+      <div>
+        <p />
+      </div>
+    </div>
+    <div
+      className="sc-AxirZ ZiLo"
+    >
+      <p>
+        Likes
+      </p>
+      <div>
+        <p />
+      </div>
+    </div>
+    <div
+      className="sc-AxirZ ZiLo"
+    >
+      <p>
+        Fecha de lanzamiento
+      </p>
+      <div>
+        <p />
+      </div>
+    </div>
+  </div>
+</div>
+`;

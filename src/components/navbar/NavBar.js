@@ -12,34 +12,34 @@ export const NavBar = () => {
   const dispatch = useAuthDispatch();
   const { dispatch: dispatchMovies } = useContext(MoviesContext);
   const history = useHistory();
-
+  
   const handleClickLoginGoogle = () => {
     firebase
-      .auth()
-      .signInWithPopup(googleAuthProvider)
-      .then(function (result) {})
+    .auth()
+    .signInWithPopup(googleAuthProvider)
+    .then(function (result) {})
       .catch(function (error) {
         console.log(error);
       });
-  };
-
-  const handleClickLogout = () => {
-    firebase.auth().signOut();
-    dispatch({
-      type: types.logoutUser,
+    };
+    
+    const handleClickLogout = () => {
+      firebase.auth().signOut();
+      dispatch({
+        type: types.logoutUser,
     });
   };
-
+  
   const cleanFavoriteMovies = () => {
     dispatchMovies({
       type: types.cleanMovies,
     });
   };
-
+  
   const handlePushPage = () => {
     history.push("/");
   };
-
+  
   return (
     <ContainNav>
       <MainTitle>
@@ -48,40 +48,37 @@ export const NavBar = () => {
       <ContainButtons>
         <NavLink
           activeStyle={{
-            color: "#d9d9d9",
+            color: "#f57f17",
             pointerEvents: "none",
             cursor: "default",
           }}
-          onClick={cleanFavoriteMovies}
           to="/popular"
         >
           Populares
         </NavLink>
         <NavLink
           activeStyle={{
-            color: "#d9d9d9",
+            color: "#f57f17",
             pointerEvents: "none",
             cursor: "default",
           }}
-          onClick={cleanFavoriteMovies}
           to="/top"
         >
           Mejor valoradas
         </NavLink>
         <NavLink
           activeStyle={{
-            color: "#d9d9d9",
+            color: "#f57f17",
             pointerEvents: "none",
             cursor: "default",
           }}
-          onClick={cleanFavoriteMovies}
           to="/upcoming"
         >
           Proximas
         </NavLink>
         <NavLink
           activeStyle={{
-            color: "#d9d9d9",
+            color: "#f57f17",
             pointerEvents: "none",
             cursor: "default",
           }}
@@ -95,7 +92,7 @@ export const NavBar = () => {
           <NavLink
             to="/favorites"
             activeStyle={{
-              color: "#d9d9d9",
+              color: "#f57f17",
               pointerEvents: "none",
               cursor: "default",
             }}

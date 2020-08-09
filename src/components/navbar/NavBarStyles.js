@@ -3,7 +3,7 @@ import { respondTo } from "../../styles/_respondTo";
 
 export const ContainNav = styled.div`
   display: grid;
-  background-color: rgba(82, 72, 156, 1);
+  background-color: #512da8;
   grid-template-columns: 100%;
   grid-template-rows: auto auto;
   gap: 10px;
@@ -45,8 +45,9 @@ export const MainTitle = styled.div`
   h1 {
     margin: 2px;
     cursor: pointer;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: white;
+    font-weight: 900;
   }
 
   ${respondTo.sm`
@@ -115,6 +116,7 @@ export const ContainButtons = styled.div`
     text-decoration: none;
     color: #FFFFFF;
     margin: 0 5px 0 5px;
+    font-family: 'Roboto', sans-serif;
 
     transition: 300ms ease background-color;
     transition: 300ms ease color;

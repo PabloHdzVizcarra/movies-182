@@ -1,43 +1,77 @@
 import styled from "styled-components";
+import { respondTo } from "../../styles/_respondTo";
 
 export const ContainCard = styled.div`
-  display: flex;
+  display: grid;
   flex-direction: column;
-  padding: 1rem;
   background-color: rgba(82, 72, 156, .1);
   border-radius: 6px;
-  /* height: fit-content; */
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
 
   h4 {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    font-family: "Comfortaa", cursive;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
     font-size: 20px;
+    color: #ff6d00;
+    margin: 5px;
   }
 
   img {
+    border-radius: 6px 6px 0 0;
     width: 100%;
     -webkit-box-shadow: 10px 9px 10px -5px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 9px 10px -5px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 9px 10px -5px rgba(0, 0, 0, 0.75);
   }
+
+  svg {
+    font-size: 25px;
+  }
+
+  ${respondTo.sm`
+    img {
+      height:550px;
+    }
+  `}
+  ${respondTo.md`
+    img {
+      height: 360px;
+    }
+  `}
+  ${respondTo.lg`
+    img {
+      height: 315px;
+    }
+  `}
+
+  ${respondTo.xg`
+    img {
+      height: 380px;
+    }
+  `}
+
+  
 `;
 
 export const IconAndText = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 5px;
+  margin-top: 2px;
 
   p {
     margin: 2px;
-    font-weight: bold;
-    font-family: monospace;
+    font-size: 14px;
+    font-weight: 400;
   }
 
   div {
     display: flex;
-    margin-left: 10px;
-    font-size: 13px;
+    margin-left: 5px;
+  }
+
+  .finalP {
+    padding-bottom: 10px;
   }
 `;
 
@@ -55,5 +89,8 @@ export const TitleAndIcon = styled.div`
 `;
 
 export const InfoData = styled.div`
-  
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 100%;
+
 `;

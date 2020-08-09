@@ -6,11 +6,13 @@ import {
   faGamepad,
   faHourglassStart,
   faFire,
+  faFireAlt,
   faCalendarDay,
   faThumbsUp,
   faHeart,
   faHeartBroken,
 } from "@fortawesome/free-solid-svg-icons";
+
 
 library.add(
   fab,
@@ -22,7 +24,8 @@ library.add(
   faFire,
   faCalendarDay,
   faHeart,
-  faHeartBroken
+  faHeartBroken,
+  faFireAlt
 );
 
 /* EXAMPLES

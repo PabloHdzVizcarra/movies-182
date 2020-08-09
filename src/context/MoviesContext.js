@@ -218,7 +218,6 @@ export const MoviesProvider = ({ children }) => {
   };
 
   const deleteMovieFromFavorites = async (userID, docID) => {
-
     dispatch({
       type: types.removeMovieFromFavorites,
       payload: docID,

@@ -3,7 +3,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { useAuthState } from "../../context/authContext";
 import { MoviesContext } from "../../context/MoviesContext";
-import { ContainCard, TitleAndIcon, IconAndText, InfoData } from "./movie-card-styles";
+import {
+  ContainCard,
+  IconAndText,
+  InfoData,
+} from "./MovieCardStyles";
+import { shortTitleMovie } from "../../helpers/short-title-movie";
+import moment from "moment";
+import "moment/locale/es";
+moment.locale("es");
 
 export const MovieCard = ({
   docID,
@@ -23,54 +31,63 @@ export const MovieCard = ({
     deleteMovieFromFavorites(activeUser.uid, docID);
   }
 
+  const newDate = moment(release_date).format("DD MMMM YYYY");
+  const shortTitle = shortTitleMovie(title);
+
   return (
     <ContainCard className="animate__animated animate__fadeIn">
-      <TitleAndIcon>
-        <h4>{title}</h4>
-        {isActived && (
-          <FontAwesomeIcon
-            icon="heart-broken"
-            onClick={handleDeleteFavoriteMovie}
-          />
-        )}
-      </TitleAndIcon>
-      <Link to={`/search/${id}`}>
-        {imgMovie ? (
-          <img src={imgMovie} alt={title} />
-        ) : (
-          <img
-            src={
-              poster_path
-                ? `https://image.tmdb.org/t/p/w342/${poster_path}`
-                : "https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
-            }
-            alt="No hay Imagen Disponible"
-          />
-        )}
-      </Link>
-      <InfoData>
-        <IconAndText>
-          <p>Popularidad</p>
-          <div>
-            <FontAwesomeIcon icon="fire" color="#ff9900" />
-            <p>{popularity}</p>
-          </div>
-        </IconAndText>
-        <IconAndText>
-          <p>Likes</p>
-          <div>
-            <FontAwesomeIcon icon="thumbs-up" color="#b98946" />
-            <p>{vote_average}</p>
-          </div>
-        </IconAndText>
-        <IconAndText>
-          <p>Fecha de lanzamiento</p>
-          <div>
-            <FontAwesomeIcon icon="calendar-day" color="#1a75ff" />
-            <p>{release_date}</p>
-          </div>
-        </IconAndText>
-      </InfoData>
+      <div>
+        <Link to={`/search/${id}`}>
+          {imgMovie ? (
+            <img src={imgMovie} alt={title} />
+          ) : (
+            <img
+              src={
+                poster_path
+                  ? `https://image.tmdb.org/t/p/w342/${poster_path}`
+                  : "https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+              }
+              alt="No hay Imagen Disponible"
+            />
+          )}
+        </Link>
+      </div>
+
+      <div>
+        <InfoData>
+          <h4>{shortTitle}</h4>
+          {isActived && (
+            <FontAwesomeIcon
+              icon="heart-broken"
+              onClick={handleDeleteFavoriteMovie}
+            />
+          )}
+          <IconAndText>
+            <div>
+              <p>Calificacion:</p>
+              <p>
+                <b>{vote_average}</b>{" "}
+              </p>
+            </div>
+          </IconAndText>
+          <IconAndText>
+            <div>
+              <p> Likes: </p>
+              <p>
+                <b>{popularity}</b>{" "}
+              </p>
+            </div>
+          </IconAndText>
+          <IconAndText>
+            <div style={{ paddingBottom: "10px" }}>
+              <p>Estreno: </p>
+              <p>
+                <b>{newDate}</b>{" "}
+              </p>
+            </div>
+          </IconAndText>
+        </InfoData>
+      </div>
     </ContainCard>
   );
 };
