@@ -43,7 +43,7 @@ export const NavBar = () => {
   return (
     <ContainNav>
       <MainTitle>
-        <h1 onClick={handlePushPage}>Fun Movies</h1>
+        <h1 onClick={handlePushPage}>PelisData</h1>
       </MainTitle>
       <ContainButtons>
         <NavLink
