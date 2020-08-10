@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { useAuthState } from "../../context/authContext";
 import { MoviesContext } from "../../context/MoviesContext";
@@ -82,9 +81,7 @@ export const MovieCard = ({
             </div>
           </IconAndText>
           {isActived && (
-            <TextDeleteMovie
-              onClick={handleDeleteFavoriteMovie}
-            >
+            <TextDeleteMovie onClick={handleDeleteFavoriteMovie}>
               Eliminar pelicula
             </TextDeleteMovie>
           )}

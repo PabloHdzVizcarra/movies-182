@@ -1,8 +1,8 @@
 import React from "react";
 import { types } from "../types/types";
 
-const AuthStateContext = React.createContext();
-const AuthDispatchContext = React.createContext();
+export const AuthStateContext = React.createContext();
+export const AuthDispatchContext = React.createContext();
 
 function authReducer(state, action) {
   switch (action.type) {

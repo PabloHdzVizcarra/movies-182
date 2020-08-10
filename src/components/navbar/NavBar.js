@@ -12,34 +12,34 @@ export const NavBar = () => {
   const dispatch = useAuthDispatch();
   const { dispatch: dispatchMovies } = useContext(MoviesContext);
   const history = useHistory();
-  
+
   const handleClickLoginGoogle = () => {
     firebase
-    .auth()
-    .signInWithPopup(googleAuthProvider)
-    .then(function (result) {})
+      .auth()
+      .signInWithPopup(googleAuthProvider)
+      .then(function (result) {})
       .catch(function (error) {
         console.log(error);
       });
-    };
-    
-    const handleClickLogout = () => {
-      firebase.auth().signOut();
-      dispatch({
-        type: types.logoutUser,
+  };
+
+  const handleClickLogout = () => {
+    firebase.auth().signOut();
+    dispatch({
+      type: types.logoutUser,
     });
   };
-  
+
   const cleanFavoriteMovies = () => {
     dispatchMovies({
       type: types.cleanMovies,
     });
   };
-  
+
   const handlePushPage = () => {
     history.push("/");
   };
-  
+
   return (
     <ContainNav>
       <MainTitle>

@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test in <PageFavorites /> if the component has favorite movies these should be rendered 1`] = `
+<div
+  className="sc-AxgMl MySFY"
+>
+  <div
+    className="sc-AxjAm kuIkN animate__animated animate__fadeIn"
+  >
+    <div>
+      <a
+        href="/search/612706"
+        onClick={[Function]}
+      >
+        <img
+          alt="No hay Imagen Disponible"
+          src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+        />
+      </a>
+    </div>
+    <div>
+      <div
+        className="sc-AxhCb gCPAHg"
+      >
+        <h4>
+          Harry Potter
+        </h4>
+        <div
+          className="sc-AxirZ dZnDSZ"
+        >
+          <div>
+            <p>
+              Calificacion:
+            </p>
+            <p>
+              <b />
+               
+            </p>
+          </div>
+        </div>
+        <div
+          className="sc-AxirZ dZnDSZ"
+        >
+          <div>
+            <p>
+               Likes: 
+            </p>
+            <p>
+              <b />
+               
+            </p>
+          </div>
+        </div>
+        <div
+          className="sc-AxirZ dZnDSZ"
+        >
+          <div
+            style={
+              Object {
+                "paddingBottom": "10px",
+              }
+            }
+          >
+            <p>
+              Estreno: 
+            </p>
+            <p>
+              <b>
+                10 agosto 2020
+              </b>
+               
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

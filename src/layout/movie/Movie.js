@@ -78,8 +78,6 @@ export const Movie = () => {
   const allCountrys = production_countries
     .map((genre) => genre.name)
     .join(" | ");
-  
-  console.log(searchMovieFavorites(id))
 
   return (
     <ContainerMovie className="animate__animated animate__fadeIn">

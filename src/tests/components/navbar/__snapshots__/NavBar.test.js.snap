@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test in <NavBar /> component the component must be correctly rendered  1`] = `
+<div
+  className="sc-AxjAm bdpptB"
+>
+  <div
+    className="sc-AxirZ fnFEkR"
+  >
+    <h1
+      onClick={[Function]}
+    >
+      PelisData
+    </h1>
+  </div>
+  <div
+    className="sc-AxiKw bjqKCa"
+  >
+    <a
+      aria-current={null}
+      href="/popular"
+      onClick={[Function]}
+    >
+      Populares
+    </a>
+    <a
+      aria-current={null}
+      href="/top"
+      onClick={[Function]}
+    >
+      Mejor valoradas
+    </a>
+    <a
+      aria-current={null}
+      href="/upcoming"
+      onClick={[Function]}
+    >
+      Proximas
+    </a>
+    <a
+      aria-current={null}
+      href="/search"
+      onClick={[Function]}
+    >
+      Buscar
+    </a>
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      Inicia Sesion
+    </a>
+  </div>
+</div>
+`;

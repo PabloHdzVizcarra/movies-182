@@ -6,6 +6,7 @@ import { db, firebase } from "../libs/firebase";
 export const MoviesContext = createContext();
 
 export const MoviesProvider = ({ children }) => {
+  
   const [state, dispatch] = useReducer(moviesReducer, {
     movies: [],
     favoriteMovies: [],
