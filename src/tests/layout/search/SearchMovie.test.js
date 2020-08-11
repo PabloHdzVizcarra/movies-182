@@ -3,10 +3,12 @@ import "@testing-library/jest-dom";
 import { AuthProvider, AuthStateContext } from '../../../context/authContext';
 import { MoviesContext } from '../../../context/MoviesContext';
 import { MemoryRouter } from 'react-router-dom';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { SearchMovie } from '../../../layout/search/SearchMovie';
 
 describe('Test in <SearchMovie />', () => {
+
+  const mockGetMovieSearch = jest.fn();
 
   const Wrapper = ({ children }) => {
     return (
@@ -34,6 +36,7 @@ describe('Test in <SearchMovie />', () => {
                   vote_average: 1029
                 }
               ],
+              getMovieSearch: mockGetMovieSearch,
               getUpcomingMovies: jest.fn(),
               dispatch: jest.fn(),
               getTopRatedMovies: jest.fn(),
@@ -61,5 +64,24 @@ describe('Test in <SearchMovie />', () => {
     customRender(<SearchMovie />)
     expect(screen.getByText("Buscar")).toBeInTheDocument();
   })
+
+  test('the search button should work ', async () => {
+
+    customRender(<SearchMovie/>)
+    const searchButton = screen.getByText("Buscar");
+    const input = screen.getByDisplayValue('');
+
+
+    fireEvent.change(input, {
+      target: {
+        value: "Iron Man"
+      }
+    });
+    fireEvent.click(searchButton);
+    expect(mockGetMovieSearch).toHaveBeenCalledWith("Iron Man");
+    expect(input.value).toBe('');
+  })
+
+
   
 })

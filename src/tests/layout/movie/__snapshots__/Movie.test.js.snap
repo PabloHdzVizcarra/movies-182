@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test in <Movie /> if active user must show the button to add movie to favorites 1`] = `
+<div
+  className="sc-AxjAm kpQkWH animate__animated animate__fadeIn"
+>
+  <div
+    className="sc-AxirZ cTYuej"
+  >
+    <h2>
+      Work It: Al ritmo de los sueños
+    </h2>
+    <p />
+  </div>
+  <div
+    className="sc-AxiKw dqhJqz"
+  >
+    <img
+      alt="No hay Imagen Disponible"
+      src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
+    />
+  </div>
+  <div
+    className="sc-AxhCb fYZkjQ"
+  >
+    <div
+      style={
+        Object {
+          "display": "flex",
+          "flexDirection": "column",
+          "height": "100%",
+          "justifyContent": "center",
+        }
+      }
+    >
+      <p />
+      <p>
+        <span>
+          Titulo Original:
+        </span>
+         
+      </p>
+      <p>
+        <span>
+          Genero:
+        </span>
+         
+        Comedia
+      </p>
+      <p>
+        <span>
+          Pais de produccion:
+        </span>
+         
+        Mexico
+      </p>
+      <p>
+        <span>
+          Lanzamiento:
+        </span>
+         
+        11 agosto 2020
+      </p>
+      <p>
+        <span>
+          Likes:
+        </span>
+         
+      </p>
+      <p>
+        <span>
+          Calificacion:
+        </span>
+         
+      </p>
+      <p>
+        <span>
+          Numero de votos:
+        </span>
+         
+      </p>
+      <div
+        className="sc-AxhUy bRWbEk"
+      >
+        <p
+          style={
+            Object {
+              "color": "#ff6d00",
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Añadir a favoritos
+        </p>
+        <i
+          className="fa"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test in <Movie /> the film must be shown correctly 1`] = `
+<div
+  className="sc-AxjAm kpQkWH animate__animated animate__fadeIn"
+>
+  <div
+    className="sc-AxirZ cTYuej"
+  >
+    <h2>
+      Work It: Al ritmo de los sueños
+    </h2>
+    <p />
+  </div>
+  <div
+    className="sc-AxiKw dqhJqz"
+  >
+    <img
+      alt="No hay Imagen Disponible"
+      src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"
+    />
+  </div>
+  <div
+    className="sc-AxhCb fYZkjQ"
+  >
+    <div
+      style={
+        Object {
+          "display": "flex",
+          "flexDirection": "column",
+          "height": "100%",
+          "justifyContent": "center",
+        }
+      }
+    >
+      <p />
+      <p>
+        <span>
+          Titulo Original:
+        </span>
+         
+      </p>
+      <p>
+        <span>
+          Genero:
+        </span>
+         
+        Comedia
+      </p>
+      <p>
+        <span>
+          Pais de produccion:
+        </span>
+         
+        Mexico
+      </p>
+      <p>
+        <span>
+          Lanzamiento:
+        </span>
+         
+        11 agosto 2020
+      </p>
+      <p>
+        <span>
+          Likes:
+        </span>
+         
+      </p>
+      <p>
+        <span>
+          Calificacion:
+        </span>
+         
+      </p>
+      <p>
+        <span>
+          Numero de votos:
+        </span>
+         
+      </p>
+    </div>
+  </div>
+</div>
+`;

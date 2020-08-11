@@ -9,7 +9,6 @@ export const types = {
   getFavoritesMoviesFirebase: "[MOVIES] Get favorite movies",
   removeMovieFromFavorites: "[MOVIES] Remove movie from favorites",
   cleanMovies: "[MOVIES] Clean favorites",
-  checkMovieExistsFavorites: "[MOVIES] Check movies exists favorites",
 
   setActiveUser: "[AUTH] Set active user",
   logoutUser: "[AUTH] Logout user",

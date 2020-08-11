@@ -3,7 +3,7 @@ import "@testing-library/jest-dom";
 import { AuthProvider, AuthStateContext } from '../../../context/authContext';
 import { MoviesContext } from '../../../context/MoviesContext';
 import { MemoryRouter } from 'react-router-dom';
-import { render, screen, getNodeText } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Upcoming } from '../../../layout/proximamente/Upcoming';
 
 describe('Test in <Upcoming />', () => {

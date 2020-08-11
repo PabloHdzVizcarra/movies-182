@@ -49,6 +49,9 @@ exports[`test in <NavBar /> component the component must be correctly rendered  
       onClick={[Function]}
     >
       Inicia Sesion
+      <i
+        className="fa"
+      />
     </a>
   </div>
 </div>

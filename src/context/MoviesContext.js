@@ -26,7 +26,7 @@ export const MoviesProvider = ({ children }) => {
   const searchMovieFavorites = (idMovie) => {
 
     if (Object.keys(state.favoriteMovies).length === 0) {
-      return null;
+      return false;
     }
 
     return state.favoriteMovies.map((movie) => movie.id).includes(idMovie);

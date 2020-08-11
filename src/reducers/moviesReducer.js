@@ -63,14 +63,8 @@ export const moviesReducer = (state, action) => {
     case types.removeMovie:
       return {
         ...state,
-        movie: [],
+        movie: {},
       };
-    
-    case types.checkMovieExistsFavorites:
-      return {
-        ...state,
-        movieSaveFavorites: action.payload
-      }
     default:
       return state;
   }

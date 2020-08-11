@@ -28,8 +28,10 @@ describe("Test in <Movie />", () => {
             name: "Mexico",
           },
         ],
+        imdb_id: 5454,
       },
       getMovieID: jest.fn(),
+      searchMovieFavorites: jest.fn()
     };
 
     const wrapper = mount(
@@ -41,12 +43,16 @@ describe("Test in <Movie />", () => {
         </MoviesContext.Provider>
       </AuthProvider>
     );
+    expect(wrapper).toMatchSnapshot();
 
     const textNode = wrapper.find("h2").text().trim();
     expect(textNode).toBe(mockMoviesContext.movie.title);
   });
 
-  test("if active user must show the button to add movie to favorites", () => {
+  test("if active user must show the button to add movie to favorites", async() => {
+
+    const mockGetMoviesFirebase = () => false;
+
     const mockMoviesContext = {
       movie: {
         id: 612706,
@@ -61,9 +67,10 @@ describe("Test in <Movie />", () => {
             name: "Mexico",
           },
         ],
+        imdb_id: 5454,
       },
       getMovieID: jest.fn(),
-      searchMovieFavorites: jest.fn(),
+      searchMovieFavorites: mockGetMoviesFirebase,
       getMoviesFirebase: jest.fn(),
     };
 
@@ -74,6 +81,9 @@ describe("Test in <Movie />", () => {
             isActived: true,
             activeUser: {
               uid: "15asdsa",
+              email: 'exmaple@exmaple.com',
+              displayName: "Pablo",
+              emailVerified: true
             },
           }}
         >
@@ -86,6 +96,7 @@ describe("Test in <Movie />", () => {
       </AuthProvider>
     );
 
+    expect(wrapper).toMatchSnapshot();
     const textNode = wrapper.find("p").getElements()[9].props.children;
     expect(textNode).toBe("Añadir a favoritos");
   });

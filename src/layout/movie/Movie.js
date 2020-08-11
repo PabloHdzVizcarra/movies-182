@@ -13,6 +13,7 @@ import {
 import moment from "moment";
 import "moment/locale/es";
 import { useAuthState } from "../../context/authContext";
+import { NotFound } from "../../pages/not-found/NotFound";
 moment.locale("es");
 
 export const Movie = () => {
@@ -51,6 +52,10 @@ export const Movie = () => {
 
   if (Object.keys(movie).length === 0) {
     return <p>Loading...</p>;
+  }
+
+  if (!movie.imdb_id) {
+    return <NotFound />;
   }
 
   const handleAddFavorite = () => {
@@ -133,7 +138,7 @@ export const Movie = () => {
               <p style={{ color: "#ff6d00", fontWeight: "bold" }}>
                 {!searchMovieFavorites(id) ? "Añadir a favoritos" : "Pelicula guardada en favoritos" }
               </p>
-              <FontAwesomeIcon icon="heart" onClick={handleAddFavorite} />
+              <FontAwesomeIcon icon={"heart"} onClick={handleAddFavorite} />
             </IconHeart>
           )}
         </div>

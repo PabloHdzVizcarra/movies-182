@@ -13,7 +13,10 @@ export const SearchMovie = () => {
   const handleSearchMovie = (event) => {
     event.preventDefault();
 
-    if (search.length < 1) return
+    if (search.length < 1) {
+      return console.log('La busqueda es demasiado corta');
+    }
+
     getMovieSearch(search);
     setSearch('');
   }
