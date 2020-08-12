@@ -59,7 +59,7 @@ exports[`Test in <Movie /> if active user must show the button to add movie to f
           Lanzamiento:
         </span>
          
-        11 agosto 2020
+        12 agosto 2020
       </p>
       <p>
         <span>
@@ -160,7 +160,7 @@ exports[`Test in <Movie /> the film must be shown correctly 1`] = `
           Lanzamiento:
         </span>
          
-        11 agosto 2020
+        12 agosto 2020
       </p>
       <p>
         <span>

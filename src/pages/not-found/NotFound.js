@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-import image from '../../assets/notFound.png';
+import psyduck from '../../assets/psyduckandhuman.jpg';
 import { respondTo } from '../../styles/_respondTo';
+import { MoviesContext } from '../../context/MoviesContext';
 
 const NotData = styled.div`
   background-color: #ffffff;
@@ -16,6 +17,7 @@ const NotData = styled.div`
 
   p {
     color: #f55019;
+    font-family: 'Sora', sans-serif;
   }
 
   ${respondTo.sm`
@@ -72,10 +74,12 @@ const NotData = styled.div`
 `;
 
 export const NotFound = () => {
+
+  const {errorContextMovies} = useContext(MoviesContext);
   return (
     <NotData>
-      <img src={image} alt="Not Found" />
-      <p>Estamos teniendo problemas intenta mas tarde</p>
+      <img src={psyduck} alt="Not Found" />
+      <p>{errorContextMovies.message}</p>
     </NotData>
   )
 }

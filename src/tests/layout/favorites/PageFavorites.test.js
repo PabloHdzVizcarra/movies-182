@@ -22,7 +22,7 @@ describe('Test in <PageFavorites />', () => {
     )
 
     const text = wrapper.find('p').text().trim();
-    expect(text).toBe('No tienes peliculas favoritas');
+    expect(text).toBe('No tienes peliculas favoritas, comienza agregando algunas peliculas');
   })
 
   test('if the component has favorite movies these should be rendered', () => {

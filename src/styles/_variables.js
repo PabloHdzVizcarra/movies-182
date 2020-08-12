@@ -5,3 +5,27 @@ export const breakpoints = {
   lg: "1200px",
   xg: "1600px"
 };
+
+/*
+
+${respondTo.xs`
+    
+`}
+
+${respondTo.sm`
+  
+`}
+
+${respondTo.md`
+
+`}
+
+${respondTo.lg`
+
+`}
+
+${respondTo.xg`
+
+`}
+
+*/

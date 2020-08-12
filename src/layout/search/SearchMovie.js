@@ -6,7 +6,7 @@ import { Contain, ErrorMessage, InputContainer, MoviesContainer } from './Search
 
 export const SearchMovie = () => {
 
-  const { getMovieSearch, searchMovie, errorForm } = useContext(MoviesContext);
+  const { getMovieSearch, searchMovie, errorContextMovies } = useContext(MoviesContext);
   const [search, setSearch] = useState('');
   
 
@@ -24,7 +24,7 @@ export const SearchMovie = () => {
 
   return (
     <Contain>
-      {errorForm.error && <ErrorMessage className="animate__animated animate__fadeInDown"><p>{errorForm.message}</p></ErrorMessage>}
+      {errorContextMovies.error && <ErrorMessage className="animate__animated animate__fadeInDown"><p>{errorContextMovies.message}</p></ErrorMessage>}
       <InputContainer>
         <form
           onSubmit={(event) => handleSearchMovie(event)}

@@ -34,6 +34,10 @@ describe('Test in <TopRated />', () => {
                   vote_average: 1029
                 }
               ],
+              errorContextMovies: {
+                error: false,
+                message: ''
+              },
               getUpcomingMovies: jest.fn(),
               dispatch: jest.fn(),
               getTopRatedMovies: jest.fn()

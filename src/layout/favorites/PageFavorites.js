@@ -2,7 +2,8 @@ import React, { useContext, useEffect } from "react";
 import { useAuthState } from "../../context/authContext";
 import { MoviesContext } from "../../context/MoviesContext";
 import { MovieCard } from "../../components/movies/MovieCard";
-import { MoviesContainer } from "./PageFavoritesStyles";
+import { MoviesContainer, TextInfo } from "./PageFavoritesStyles";
+import { Spinner } from "../../components/spinner/Spinner";
 
 export const PageFavorites = () => {
   const data = useAuthState();
@@ -18,12 +19,15 @@ export const PageFavorites = () => {
   }, [data.activeUser.uid]);
 
   if (loadingMovies) {
-    return <p>Loading Page</p>;
+    return <Spinner />;
   }
+
   return (
     <MoviesContainer>
       {favoriteMovies.length === 0 ? (
-        <p>No tienes peliculas favoritas</p>
+        <TextInfo>
+          No tienes peliculas favoritas, comienza agregando algunas peliculas
+        </TextInfo>
       ) : (
         favoriteMovies.map((movie) => (
           <MovieCard isActived={data.isActived} key={movie.id} {...movie} />

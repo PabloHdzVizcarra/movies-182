@@ -3,9 +3,10 @@ import { MoviesContext } from "../../context/MoviesContext";
 import { MovieCard } from "../../components/movies/MovieCard";
 import { ContainMovies } from "./PrincipalScreenStyles";
 import { types } from "../../types/types";
+import { NotFound } from "../not-found/NotFound";
 
 export const PrincipalScreen = () => {
-  const { movies, getPopularMovies, dispatch } = useContext(MoviesContext);
+  const { movies, getPopularMovies, dispatch, errorContextMovies } = useContext(MoviesContext);
 
   useEffect(() => {
     let mounted = true;
@@ -21,6 +22,10 @@ export const PrincipalScreen = () => {
       })
     }
   }, [getPopularMovies, dispatch]);
+
+  if (errorContextMovies.error) {
+    return <NotFound />
+  }
 
   return (
     <ContainMovies className="animate__animated animate__fadeIn">

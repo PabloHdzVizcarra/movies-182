@@ -46,7 +46,11 @@ describe('Test in <SearchMovie />', () => {
               },
               searchMovie: [
 
-              ]
+              ],
+              errorContextMovies: {
+                error: false,
+                message: ''
+              }
             }}
           >
           <MemoryRouter>{children}</MemoryRouter>

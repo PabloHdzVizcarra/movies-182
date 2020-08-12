@@ -3,9 +3,10 @@ import { MoviesContext } from "../../context/MoviesContext";
 import { MovieCard } from "../../components/movies/MovieCard";
 import { ContainMovies } from "./TopRatedStyles";
 import { types } from "../../types/types";
+import { NotFound } from "../../pages/not-found/NotFound";
 
 export const TopRated = () => {
-  const { movies, getTopRatedMovies, dispatch } = useContext(MoviesContext);
+  const { movies, getTopRatedMovies, dispatch, errorContextMovies } = useContext(MoviesContext);
 
   useEffect(() => {
     let mounted = true;
@@ -17,11 +18,14 @@ export const TopRated = () => {
     return () => {
       mounted = false;
       dispatch({
-        type: types.cleanMovies
-      })
-    }
-    
+        type: types.cleanMovies,
+      });
+    };
   }, [getTopRatedMovies, dispatch]);
+
+  if (errorContextMovies.error) {
+    return <NotFound />
+  }
 
   return (
     <ContainMovies className="animate__animated animate__fadeIn">

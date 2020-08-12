@@ -16,7 +16,7 @@ export const MoviesProvider = ({ children }) => {
     movieSaveFavorites: false,
   });
 
-  const [errorForm, setErrorForm] = useState({
+  const [errorContextMovies, setErrorContextMovies] = useState({
     error: false,
     message: "",
   });
@@ -44,6 +44,18 @@ export const MoviesProvider = ({ children }) => {
       );
       const { results } = await data.json();
 
+      if (!results) {
+        return setErrorContextMovies({
+          error: true,
+          message: 'Ops, estamos teniendo problemas para mostrar las peliculas'
+        })
+      }
+
+      setErrorContextMovies({
+        error: false,
+        message: ''
+      })
+
       dispatch({
         type: types.loadingTopRatedMovies,
         payload: results,
@@ -63,6 +75,18 @@ export const MoviesProvider = ({ children }) => {
       );
       const { results } = await data.json();
 
+      if (!results) {
+        return setErrorContextMovies({
+          error: true,
+          message: 'Ops, estamos teniendo problemas para mostrar las peliculas'
+        })
+      }
+
+      setErrorContextMovies({
+        error: false,
+        message: ''
+      })
+
       dispatch({
         type: types.loadingPopularMovies,
         payload: results,
@@ -81,6 +105,18 @@ export const MoviesProvider = ({ children }) => {
         `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=es-MX&page=1`
       );
       const { results } = await data.json();
+
+      if (!results) {
+        return setErrorContextMovies({
+          error: true,
+          message: 'Ops, estamos teniendo problemas para mostrar las peliculas'
+        })
+      }
+
+      setErrorContextMovies({
+        error: false,
+        message: ''
+      })
 
       dispatch({
         type: types.loadingUpcomingMovies,
@@ -131,13 +167,13 @@ export const MoviesProvider = ({ children }) => {
       const { results } = await data.json();
 
       if (results.length === 0) {
-        return setErrorForm({
+        return setErrorContextMovies({
           error: true,
           message: "Intenta buscando otra pelicula",
         });
       }
 
-      setErrorForm({
+      setErrorContextMovies({
         error: false,
         message: "",
       });
@@ -253,7 +289,7 @@ export const MoviesProvider = ({ children }) => {
         favoriteMovies,
         searchMovie,
         loadingMovies,
-        errorForm,
+        errorContextMovies,
         getMovieID,
         getPopularMovies,
         getTopRatedMovies,
