@@ -14,10 +14,10 @@ import moment from "moment";
 import "moment/locale/es";
 import { useAuthState } from "../../context/authContext";
 import { NotFound } from "../../pages/not-found/NotFound";
+import { Spinner } from "../../components/spinner/Spinner";
 moment.locale("es");
 
 export const Movie = () => {
-
   const user = useAuthState();
 
   const {
@@ -26,7 +26,7 @@ export const Movie = () => {
     addFavoriteMovie,
     dispatch,
     getMoviesFirebase,
-    searchMovieFavorites
+    searchMovieFavorites,
   } = useContext(MoviesContext);
   const { movieID } = useParams();
 
@@ -37,7 +37,6 @@ export const Movie = () => {
     }
 
     if (user.activeUser.uid) {
-      
       getMoviesFirebase(user.activeUser.uid);
     }
 
@@ -51,7 +50,7 @@ export const Movie = () => {
   }, [user.activeUser.uid]);
 
   if (Object.keys(movie).length === 0) {
-    return <p>Loading...</p>;
+    return <Spinner />;
   }
 
   if (!movie.imdb_id) {
@@ -136,7 +135,9 @@ export const Movie = () => {
           {user.isActived && !searchMovieFavorites(id) && (
             <IconHeart>
               <p style={{ color: "#ff6d00", fontWeight: "bold" }}>
-                {!searchMovieFavorites(id) ? "Añadir a favoritos" : "Pelicula guardada en favoritos" }
+                {!searchMovieFavorites(id)
+                  ? "Añadir a favoritos"
+                  : "Pelicula guardada en favoritos"}
               </p>
               <FontAwesomeIcon icon={"heart"} onClick={handleAddFavorite} />
             </IconHeart>

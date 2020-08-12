@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { respondTo } from '../../styles/_respondTo';
+import styled from "styled-components";
+import { respondTo } from "../../styles/_respondTo";
 
 export const ContainMovies = styled.div`
   padding: 1rem;
@@ -7,7 +7,6 @@ export const ContainMovies = styled.div`
   gap: 10px;
   background-color: #FFFFFF;
   
-
   ${respondTo.xs`
     grid-template-columns: 1fr;
   `}

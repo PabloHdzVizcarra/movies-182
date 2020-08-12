@@ -47,7 +47,6 @@ export const AppRouter = () => {
           <Route path="/upcoming" component={Upcoming} />
           <Route exact path="/search" component={SearchMovie} />
           <Route path="/search/:movieID" component={Movie} />
-          {/* <Route path="/favorites" component={PageFavorites} /> */}
 
           <PrivateRoute
             isLogin={isLogin}

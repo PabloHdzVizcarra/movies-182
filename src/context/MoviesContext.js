@@ -6,7 +6,6 @@ import { db, firebase } from "../libs/firebase";
 export const MoviesContext = createContext();
 
 export const MoviesProvider = ({ children }) => {
-  
   const [state, dispatch] = useReducer(moviesReducer, {
     movies: [],
     favoriteMovies: [],
@@ -24,15 +23,12 @@ export const MoviesProvider = ({ children }) => {
   const { movies, favoriteMovies, searchMovie, movie, loadingMovies } = state;
 
   const searchMovieFavorites = (idMovie) => {
-
     if (Object.keys(state.favoriteMovies).length === 0) {
       return false;
     }
 
     return state.favoriteMovies.map((movie) => movie.id).includes(idMovie);
-    
-    
-  }
+  };
 
   const getTopRatedMovies = useCallback(async () => {
     try {
@@ -47,14 +43,14 @@ export const MoviesProvider = ({ children }) => {
       if (!results) {
         return setErrorContextMovies({
           error: true,
-          message: 'Ops, estamos teniendo problemas para mostrar las peliculas'
-        })
+          message: "Ops, estamos teniendo problemas para mostrar las peliculas",
+        });
       }
 
       setErrorContextMovies({
         error: false,
-        message: ''
-      })
+        message: "",
+      });
 
       dispatch({
         type: types.loadingTopRatedMovies,
@@ -78,14 +74,14 @@ export const MoviesProvider = ({ children }) => {
       if (!results) {
         return setErrorContextMovies({
           error: true,
-          message: 'Ops, estamos teniendo problemas para mostrar las peliculas'
-        })
+          message: "Ops, estamos teniendo problemas para mostrar las peliculas",
+        });
       }
 
       setErrorContextMovies({
         error: false,
-        message: ''
-      })
+        message: "",
+      });
 
       dispatch({
         type: types.loadingPopularMovies,
@@ -109,14 +105,14 @@ export const MoviesProvider = ({ children }) => {
       if (!results) {
         return setErrorContextMovies({
           error: true,
-          message: 'Ops, estamos teniendo problemas para mostrar las peliculas'
-        })
+          message: "Ops, estamos teniendo problemas para mostrar las peliculas",
+        });
       }
 
       setErrorContextMovies({
         error: false,
-        message: ''
-      })
+        message: "",
+      });
 
       dispatch({
         type: types.loadingUpcomingMovies,
@@ -243,7 +239,7 @@ export const MoviesProvider = ({ children }) => {
       vote_average,
       vote_count,
     };
-    const { uid } =  firebase.auth().currentUser;
+    const { uid } = firebase.auth().currentUser;
 
     if (uid) {
       const { id } = await db

@@ -7,7 +7,6 @@ export const ContainMovies = styled.div`
   gap: 10px;
   background-color: #FFFFFF;
   
-
   ${respondTo.xs`
     grid-template-columns: 1fr;
   `}

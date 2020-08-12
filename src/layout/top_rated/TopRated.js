@@ -6,7 +6,12 @@ import { types } from "../../types/types";
 import { NotFound } from "../../pages/not-found/NotFound";
 
 export const TopRated = () => {
-  const { movies, getTopRatedMovies, dispatch, errorContextMovies } = useContext(MoviesContext);
+  const {
+    movies,
+    getTopRatedMovies,
+    dispatch,
+    errorContextMovies,
+  } = useContext(MoviesContext);
 
   useEffect(() => {
     let mounted = true;
@@ -24,7 +29,7 @@ export const TopRated = () => {
   }, [getTopRatedMovies, dispatch]);
 
   if (errorContextMovies.error) {
-    return <NotFound />
+    return <NotFound />;
   }
 
   return (

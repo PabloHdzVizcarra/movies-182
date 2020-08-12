@@ -13,7 +13,6 @@ import {
   faHeartBroken,
 } from "@fortawesome/free-solid-svg-icons";
 
-
 library.add(
   fab,
   faThumbsUp,

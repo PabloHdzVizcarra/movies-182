@@ -89,7 +89,6 @@ export const InfoData = styled.div`
   padding-left: 5px;
   padding-right: 5px;
   width: 100%;
-
 `;
 
 export const TextDeleteMovie = styled.p`
@@ -104,7 +103,7 @@ export const TextDeleteMovie = styled.p`
 
   transition: ease color 300ms;
 
-    &:hover {
-      color: #D50000;
-    }
+  &:hover {
+    color: #d50000;
+  }
 `;

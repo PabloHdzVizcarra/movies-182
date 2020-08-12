@@ -6,7 +6,9 @@ import { types } from "../../types/types";
 import { NotFound } from "../not-found/NotFound";
 
 export const PrincipalScreen = () => {
-  const { movies, getPopularMovies, dispatch, errorContextMovies } = useContext(MoviesContext);
+  const { movies, getPopularMovies, dispatch, errorContextMovies } = useContext(
+    MoviesContext
+  );
 
   useEffect(() => {
     let mounted = true;
@@ -18,13 +20,13 @@ export const PrincipalScreen = () => {
     return () => {
       mounted = false;
       dispatch({
-        type: types.cleanMovies
-      })
-    }
+        type: types.cleanMovies,
+      });
+    };
   }, [getPopularMovies, dispatch]);
 
   if (errorContextMovies.error) {
-    return <NotFound />
+    return <NotFound />;
   }
 
   return (

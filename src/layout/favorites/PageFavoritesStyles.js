@@ -32,17 +32,14 @@ export const TextInfo = styled.p`
 
   ${respondTo.sm`
     grid-column: 1 / 3;
-    
   `}
 
   ${respondTo.md`
     grid-column: 1 / 5;
-
   `}
 
   ${respondTo.lg`
     grid-column: 1 / 7;
-
   `}
 
   ${respondTo.xg`

@@ -9,8 +9,6 @@ export const ContainNav = styled.div`
   gap: 10px;
   align-items: center;
 
-
-
   ${respondTo.sm`
     padding: 0;
     display: flex;
@@ -41,7 +39,6 @@ export const MainTitle = styled.div`
   align-items: center;
   padding: 10px;
   
-
   h1 {
     margin: 2px;
     cursor: pointer;
@@ -81,12 +78,10 @@ export const MainTitle = styled.div`
 `;
 
 export const ContainButtons = styled.div`
-
   padding-bottom: 10px;
   display: grid;
   gap: 5px;
   
-
   ${respondTo.xs`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -146,7 +141,6 @@ export const ContainButtons = styled.div`
     padding: 7px;
     text-align: inherit;
     text-decoration: none;
-
 
     transition: 300ms ease background-color;
     transition: 300ms ease color;
