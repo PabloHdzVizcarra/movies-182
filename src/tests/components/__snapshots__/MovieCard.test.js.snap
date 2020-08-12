@@ -17,7 +17,7 @@ exports[`Test in <MovieCard /> should show correctly component 1`] = `
   </div>
   <div>
     <div
-      className="sc-AxhCb gCPAHg"
+      className="sc-AxhCb buhHwi"
     >
       <h4>
         Spiderman
@@ -74,7 +74,7 @@ exports[`Test in <MovieCard /> should show correctly component 1`] = `
         </div>
       </div>
       <p
-        className="sc-AxhUy gYuGvM"
+        className="sc-AxhUy KsMZo"
         onClick={[Function]}
       >
         Eliminar pelicula

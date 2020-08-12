@@ -2,10 +2,10 @@
 
 exports[`test in <NavBar /> component the component must be correctly rendered  1`] = `
 <div
-  className="sc-AxjAm bdpptB"
+  className="sc-AxjAm fvhgcF"
 >
   <div
-    className="sc-AxirZ fnFEkR"
+    className="sc-AxirZ dGcRPv"
   >
     <h1
       onClick={[Function]}
@@ -14,7 +14,7 @@ exports[`test in <NavBar /> component the component must be correctly rendered  
     </h1>
   </div>
   <div
-    className="sc-AxiKw bjqKCa"
+    className="sc-AxiKw fbYlOk"
   >
     <a
       aria-current={null}
