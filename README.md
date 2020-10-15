@@ -15,6 +15,7 @@ web application where you can see data about movies
 - Firebase
 - React Router DOM
 - Styled Components
+- Enzyme
 
 ### Description
 you can search for movies by different categories, among them Popular, Best rated, Coming soon and through a search engine by name.
