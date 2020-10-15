@@ -10,11 +10,11 @@ web application where you can see data about movies
     npm install
 
 ### Tecnologies Used
-React Js
-Font Awesome
-Firebase
-React Router DOM
-Styled Components
+- React Js
+- Font Awesome
+- Firebase
+- React Router DOM
+- Styled Components
 
 ### Description
 you can search for movies by different categories, among them Popular, Best rated, Coming soon and through a search engine by name.
