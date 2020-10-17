@@ -3,11 +3,23 @@
 web application where you can see data about movies
 
 ### Link a la aplicacion
-[https://funmovies.netlify.app/](https://funmovies.netlify.app/)
+[https://funmovies.netlify.app/](https://pelisdata.netlify.app)
 
 ### Installation
 
     npm install
+    
+### Usage
+```
+# Install dependencies
+npm install
+
+# Run app
+npm start
+
+# Run test
+npm run test
+```
 
 ### Tecnologies Used
 - React Js
@@ -16,6 +28,7 @@ web application where you can see data about movies
 - React Router DOM
 - Styled Components
 - Enzyme
+- React Testing Library
 
 ### Description
 you can search for movies by different categories, among them Popular, Best rated, Coming soon and through a search engine by name.
